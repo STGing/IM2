@@ -16,6 +16,9 @@ public class MyApplication extends Application {
 
         //初始化环信
         initHX();
+
+        //初始化Model
+        Model.getInstance().init(this);
     }
 
     private void initHX() {

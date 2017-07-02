@@ -35,6 +35,8 @@ public class SplashActivity extends BaseActivity {
                     //没有登录过
                     startActivity(new Intent(SplashActivity.this,LoginActivity.class));
                 }
+
+                finish();
             }
         });
     }

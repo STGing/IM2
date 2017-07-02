@@ -36,7 +36,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         unbinder.unbind();
     }
 
-    public abstract void initListener();
+    public void initListener(){
+
+    }
 
     public abstract void initData();
 
