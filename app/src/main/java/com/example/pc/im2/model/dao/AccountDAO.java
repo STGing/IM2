@@ -17,21 +17,22 @@ import com.example.pc.im2.model.table.AccountTable;
 
 public class AccountDAO {
 
+
     private final AccountDB accountDB;
 
     public AccountDAO(Context context){
         accountDB = new AccountDB(context);
     }
-
+    
     /**
      * 增加用户
      */
     public void addUser(UserInfo user){
-
         //校验
         if (user == null){
             throw new NullPointerException("userInfo不能为空");
         }
+
 
         //数据操作
         SQLiteDatabase database = accountDB.getWritableDatabase();

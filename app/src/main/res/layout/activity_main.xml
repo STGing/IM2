@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.pc.im2.controller.activity.MainActivity">
 
-    <TextView
-        android:textSize="40sp"
-        android:text="这里是主页面"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <FrameLayout
+        android:id="@+id/main_frameLayout"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 
-</android.support.constraint.ConstraintLayout>
+    <RadioGroup
+        android:id="@+id/main_radioGroup"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <RadioButton
+            android:id="@+id/main_radioButton_conversation"
+            android:checked="true"
+            style="@style/MainButtonStyle"
+            android:text="会话"
+             />
+
+        <RadioButton
+            android:id="@+id/main_radioButton_contact"
+            style="@style/MainButtonStyle"
+            android:text="联系人"
+            />
+
+        <RadioButton
+            android:id="@+id/main_radioButton_setting"
+            style="@style/MainButtonStyle"
+            android:text="设置"
+            />
+
+    </RadioGroup>
+</LinearLayout>
