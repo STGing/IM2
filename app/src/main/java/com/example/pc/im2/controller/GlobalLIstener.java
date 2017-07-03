@@ -1,5 +1,8 @@
 package com.example.pc.im2.controller;
 
+import com.example.pc.im2.common.Model;
+import com.example.pc.im2.model.bean.InvitationInfo;
+import com.example.pc.im2.model.bean.UserInfo;
 import com.hyphenate.EMContactListener;
 import com.hyphenate.chat.EMClient;
 
@@ -19,6 +22,17 @@ public class GlobalLIstener {
         @Override
         public void onContactInvited(String username, String reason) {
 
+            //记录邀请信息
+            InvitationInfo info = new InvitationInfo();
+            info.setReason(reason);
+            info.setUserInfo(new UserInfo(username,username));
+            //有人邀请，保存邀请信息
+            Model.getInstance()
+                    .getDBManager()
+                    .getInvitationDAO()
+                    .addInvitation(info);
+
+            //有人邀请，所以小红点提示消息
         }
 
         //好友请求被同意  你加别人的时候 别人同意了

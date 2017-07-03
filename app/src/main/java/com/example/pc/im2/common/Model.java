@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.pc.im2.model.bean.UserInfo;
 import com.example.pc.im2.model.dao.AccountDAO;
+import com.example.pc.im2.utils.DBManager;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -16,6 +17,7 @@ public class Model {
 
     private Context context;
     private AccountDAO accountDAO;//用户数据库操作
+    private DBManager manager;
 
     /**
      * 设置单例模式
@@ -59,6 +61,13 @@ public class Model {
     public void loginSuccess(UserInfo userInfo) {
         //添加用户
         accountDAO.addUser(userInfo);
+
+        //如果Manager存在，就关闭
+        if (manager != null)
+            manager.close();
+
+        //此时，初始化DBManager
+        manager = new DBManager(context,userInfo.getUsername());
     }
 
     /**
@@ -69,4 +78,10 @@ public class Model {
         return accountDAO;
     }
 
+    /**
+     * 获取 Contact 和 Invation 2个数据库的操作这
+     */
+    public DBManager getDBManager(){
+        return manager;
+    }
 }
