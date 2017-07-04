@@ -41,6 +41,7 @@ public class GlobalLIstener {
             InvitationInfo info = new InvitationInfo();
             info.setReason(reason);
             info.setUserInfo(new UserInfo(username,username));
+            info.setStatus(InvitationInfo.InvitationStatus.NEW_INVITE);
             //有人邀请，保存邀请信息
             Model.getInstance()
                     .getDBManager()
@@ -58,9 +59,17 @@ public class GlobalLIstener {
         //好友请求被同意  你加别人的时候 别人同意了
         @Override
         public void onContactAgreed(String username) {
-            //添加用户信息
-            Model.getInstance().getDBManager().getContactDAO()
-                    .saveContact(new UserInfo(username,username),true);
+            //添加邀请信息
+            //记录邀请信息
+            InvitationInfo info = new InvitationInfo();
+            info.setReason("邀请被接受");
+            info.setUserInfo(new UserInfo(username,username));
+            info.setStatus(InvitationInfo.InvitationStatus.INVITE_ACCEPT_BY_PEER);
+            //保存
+            Model.getInstance()
+                    .getDBManager()
+                    .getInvitationDAO()
+                    .addInvitation(info);
 
             //保存小红点信息
             SPUtils.put(mContext,SPUtils.NEW_INVITATION,true);

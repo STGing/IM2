@@ -12,7 +12,9 @@ import android.content.SharedPreferences;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
-  
+
+import static android.content.Context.MODE_PRIVATE;
+
 public class SPUtils  
 {  
     /** 
@@ -34,7 +36,7 @@ public class SPUtils
     {  
   
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE);  
+                MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();  
   
         if (object instanceof String)  
@@ -71,7 +73,7 @@ public class SPUtils
     public static Object get(Context context,String key, Object defaultObject)
     {  
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE);  
+                MODE_PRIVATE);
   
         if (defaultObject instanceof String)  
         {  
@@ -101,7 +103,7 @@ public class SPUtils
     public static void remove(Context context, String key)
     {  
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE);  
+                MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();  
         editor.remove(key);  
         SharedPreferencesCompat.apply(editor);  
@@ -114,7 +116,7 @@ public class SPUtils
     public static void clear(Context context)
     {  
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE);  
+                MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();  
         editor.clear();  
         SharedPreferencesCompat.apply(editor);  
@@ -129,7 +131,7 @@ public class SPUtils
     public static boolean contains(Context context, String key)
     {  
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE);  
+                MODE_PRIVATE);
         return sp.contains(key);  
     }  
   
@@ -142,7 +144,7 @@ public class SPUtils
     public static Map<String, ?> getAll(Context context)
     {  
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE);  
+                MODE_PRIVATE);
         return sp.getAll();  
     }  
   

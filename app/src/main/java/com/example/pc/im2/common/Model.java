@@ -2,9 +2,11 @@ package com.example.pc.im2.common;
 
 import android.content.Context;
 
+import com.example.pc.im2.controller.GlobalLIstener;
 import com.example.pc.im2.model.bean.UserInfo;
 import com.example.pc.im2.model.dao.AccountDAO;
 import com.example.pc.im2.utils.DBManager;
+import com.example.pc.im2.utils.SPUtils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,6 +20,7 @@ public class Model {
     private Context context;
     private AccountDAO accountDAO;//用户数据库操作
     private DBManager manager;
+    private GlobalLIstener globalLIstener;
 
     /**
      * 设置单例模式
@@ -44,6 +47,8 @@ public class Model {
     public void init(Context context){
         this.context = context;
         accountDAO = new AccountDAO(context);
+        //初始化全局监听
+        globalLIstener = new GlobalLIstener(context);
     }
 
     /**
@@ -59,6 +64,9 @@ public class Model {
      * 登录成功以后保存用户数据
      */
     public void loginSuccess(UserInfo userInfo) {
+
+
+
         //添加用户
         accountDAO.addUser(userInfo);
 

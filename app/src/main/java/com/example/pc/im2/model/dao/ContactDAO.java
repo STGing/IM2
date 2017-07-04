@@ -113,7 +113,7 @@ public class ContactDAO {
         value.put(ContactTable.COL_USER_NICK,user.getNick());
         value.put(ContactTable.COL_USER_PHOTO,user.getPhoto());
         value.put(ContactTable.COL_IS_CONTACT,isMyContact?1:0);
-        database.replace(ContactTable.CREATE_TABLE,null,value);
+        database.replace(ContactTable.TABLE_NAME,null,value);
     }
 
     /**
@@ -143,6 +143,6 @@ public class ContactDAO {
 
         SQLiteDatabase database = dbHelper.getReadableDatabase();
 
-        database.delete(ContactTable.CREATE_TABLE,ContactTable.COL_USER_HXID+"=?",new String[]{hxId});
+        database.delete(ContactTable.TABLE_NAME,ContactTable.COL_USER_HXID+"=?",new String[]{hxId});
     }
 }

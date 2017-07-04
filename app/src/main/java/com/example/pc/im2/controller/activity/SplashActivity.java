@@ -6,6 +6,7 @@ import android.os.CountDownTimer;
 import com.example.pc.im2.R;
 import com.example.pc.im2.base.BaseActivity;
 import com.example.pc.im2.common.Model;
+import com.example.pc.im2.model.bean.UserInfo;
 import com.hyphenate.chat.EMClient;
 
 public class SplashActivity extends BaseActivity {
@@ -30,6 +31,12 @@ public class SplashActivity extends BaseActivity {
                 boolean loggedInBefore = EMClient.getInstance().isLoggedInBefore();
                 if (loggedInBefore){
                     //登录过
+
+                    //初始化数据库数据
+                    String currentUser = EMClient.getInstance().getCurrentUser();
+                    Model.getInstance().loginSuccess(new UserInfo(currentUser,currentUser));
+
+                    //跳转页面
                     startActivity(new Intent(SplashActivity.this,MainActivity.class));
                 }else{
                     //没有登录过
