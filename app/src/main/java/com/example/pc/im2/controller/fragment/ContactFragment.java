@@ -69,10 +69,14 @@ public class ContactFragment extends EaseContactListFragment {
             @Override
             public void onListItemClicked(EaseUser user) {
 
-                //点击联系人，跳转，将用户数据传递
-                Intent intent = new Intent(getActivity(), ChatActivity.class);
-                intent.putExtra(EaseConstant.EXTRA_USER_ID,user.getUsername());
-                startActivity(intent);
+                //因为界面上面的2个是邀请好友和群组，不能点击的User，所以要校验
+                if (user != null){
+                    //点击联系人，跳转，将用户数据传递
+                    Intent intent = new Intent(getActivity(), ChatActivity.class);
+                    intent.putExtra(EaseConstant.EXTRA_USER_ID,user.getUsername());
+                    startActivity(intent);
+                }
+                
             }
         });
     }
