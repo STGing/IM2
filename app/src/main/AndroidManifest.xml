@@ -64,7 +64,8 @@
         <activity android:name=".controller.activity.MainActivity" />
         <activity android:name=".controller.activity.LoginActivity" />
         <activity android:name=".controller.activity.SearchContactActivity" />
-        <activity android:name=".controller.activity.InvitationDetailActivity"></activity>
+        <activity android:name=".controller.activity.InvitationDetailActivity" />
+        <activity android:name=".controller.activity.ChatActivity"></activity>
     </application>
 
 </manifest>

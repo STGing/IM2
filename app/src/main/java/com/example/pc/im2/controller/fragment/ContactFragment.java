@@ -15,12 +15,14 @@ import android.widget.LinearLayout;
 import com.example.pc.im2.R;
 import com.example.pc.im2.common.ContactValue;
 import com.example.pc.im2.common.Model;
+import com.example.pc.im2.controller.activity.ChatActivity;
 import com.example.pc.im2.controller.activity.InvitationDetailActivity;
 import com.example.pc.im2.controller.activity.SearchContactActivity;
 import com.example.pc.im2.model.bean.UserInfo;
 import com.example.pc.im2.utils.SPUtils;
 import com.example.pc.im2.utils.UIUtils;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.ui.EaseContactListFragment;
 import com.hyphenate.exceptions.HyphenateException;
@@ -61,6 +63,18 @@ public class ContactFragment extends EaseContactListFragment {
     @Override
     protected void initView() {
         super.initView();
+
+        //点击联系人跳转到会话界面
+        setContactListItemClickListener(new EaseContactListItemClickListener() {
+            @Override
+            public void onListItemClicked(EaseUser user) {
+
+                //点击联系人，跳转，将用户数据传递
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                intent.putExtra(EaseConstant.EXTRA_USER_ID,user.getUsername());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
