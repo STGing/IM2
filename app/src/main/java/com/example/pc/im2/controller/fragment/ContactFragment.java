@@ -76,7 +76,7 @@ public class ContactFragment extends EaseContactListFragment {
                     intent.putExtra(EaseConstant.EXTRA_USER_ID,user.getUsername());
                     startActivity(intent);
                 }
-                
+
             }
         });
     }
@@ -326,5 +326,6 @@ public class ContactFragment extends EaseContactListFragment {
         //解除广播
         manager.unregisterReceiver(invitationReciver);
         manager.unregisterReceiver(contactReciver);
+
     }
 }
